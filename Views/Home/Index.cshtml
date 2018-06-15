@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Create Review";
+}
+@model RESTmakefood.Models.Reviews
+<form action="reviews" method="POST"><table class="left">
+    <h2>Write a new Review:</h2>
+    <tr>
+        <td>Your Name: </td>
+        <td><input asp-for="user"></td>
+        <td><span asp-validation-for="user"></span></td>
+    </tr>
+    <tr>
+        <td>Restaurant Name: </td>
+        <td><input asp-for="restaurant"></td>
+        <td><span asp-validation-for="restaurant"></span></td>
+    </tr>
+    <tr>
+        <td>Review: </td>
+        <td><textarea asp-for="content"></textarea></td>
+        <td><span asp-validation-for="content"></span></td>
+    </tr>
+    <tr>
+        <td>Date of Visit: </td>
+        <td><input asp-for="date_visited"></td>
+        <td><span asp-validation-for="date_visited"></span></td>
+    </tr>
+    <tr><td><input type="submit" value="Submit!"></td></tr>
+    </table>
+    <div class="right">
+        <label for="score">Rating: </label>
+        <select asp-for="score"> @{
+            for(int i=1; i<6; i++)
+            {
+                <option value="@i">@i</option>
+            }    
+        }
+
+        </select>
+
+        <span asp-validation-for="score"></span>
+    </div>
+</form>
